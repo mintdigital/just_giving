@@ -12,15 +12,17 @@ end
 require 'rake'
 
 require 'jeweler'
+require 'lib/just_giving/version'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "just_giving"
-  gem.homepage = "http://github.com/bob-p/just_giving"
+  gem.homepage = "http://github.com/mintdigital/just_giving"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "thomaspomfret@gmail.com"
+  gem.summary = %Q{A ruby wrapper for the justgiving.com API}
+  gem.description = %Q{A ruby wrapper for the justgiving.com API}
+  gem.email = "thomas@mintdigital.com"
   gem.authors = ["Thomas Pomfret"]
+  gem.version = JustGiving::Version::STRING
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new

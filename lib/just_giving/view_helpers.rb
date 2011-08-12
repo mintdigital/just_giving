@@ -4,7 +4,7 @@ module JustGiving
       SimpleDonationIntegration.charity_page_url(short_name) 
     end
 
-    def just_giving_chairty_donation_page_url(charity_id, options={})
+    def just_giving_charity_donation_page_url(charity_id, options={})
       SimpleDonationIntegration.charity_donation_url(charity_id, options)
     end
 
