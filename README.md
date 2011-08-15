@@ -11,6 +11,8 @@ Installation
 Usage
 -----
 
+### Simple Donation Integration
+
 Just giving provides 2 separate API's - Simple Donation Integration (SDI) for making donations and an XML API for querying and creating data.
 
 This gem currently provides functionality to link to SDI, if you are using rails you can use view helpers like so:
@@ -25,6 +27,14 @@ This gem currently provides functionality to link to SDI, if you are using rails
       :donation_id => 'JUSTGIVING-DONATION-ID'}) %>)
     
 As you can see just_giving_charity_donation_page_url and just_giving_fundraising_donation_url take and optional options hash - supply as many or as few of these as you need.
+
+### API
+
+JustGiving::Configuration.application_id = YOUR_APP_ID
+JustGiving::Configuration.ca_path = "/System/Library/OpenSSL/certs" (defaults to "/usr/lib/ssl/certs")
+JustGiving::Configuration.environment = :production (defaults to :staging)
+JustGiving::Account.new(YOUR_EMAIL).pages
+
 
 Contributing to just_giving
 ---------------------------

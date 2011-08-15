@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Thomas Pomfret"]
-  s.date = %q{2011-08-12}
+  s.authors = [%q{Thomas Pomfret}]
+  s.date = %q{2011-08-15}
   s.description = %q{A ruby wrapper for the justgiving.com API}
   s.email = %q{thomas@mintdigital.com}
   s.extra_rdoc_files = [
@@ -23,9 +23,15 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "just_giving.gemspec",
+    "lib/faraday/raise_http_4xx.rb",
     "lib/just_giving.rb",
-    "lib/just_giving/config.rb",
+    "lib/just_giving/account.rb",
+    "lib/just_giving/api.rb",
+    "lib/just_giving/configuration.rb",
+    "lib/just_giving/connection.rb",
+    "lib/just_giving/error.rb",
     "lib/just_giving/railtie.rb",
+    "lib/just_giving/request.rb",
     "lib/just_giving/simple_donation_integration.rb",
     "lib/just_giving/version.rb",
     "lib/just_giving/view_helpers.rb",
@@ -33,30 +39,45 @@ Gem::Specification.new do |s|
     "test/test_simple_donation_integration.rb"
   ]
   s.homepage = %q{http://github.com/mintdigital/just_giving}
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.4.1}
+  s.licenses = [%q{MIT}]
+  s.require_paths = [%q{lib}]
+  s.rubygems_version = %q{1.8.8}
   s.summary = %q{A ruby wrapper for the justgiving.com API}
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<faraday>, [">= 0"])
+      s.add_runtime_dependency(%q<faraday_middleware>, [">= 0"])
+      s.add_runtime_dependency(%q<hashie>, [">= 0"])
+      s.add_runtime_dependency(%q<multi_xml>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 0"])
     else
+      s.add_dependency(%q<faraday>, [">= 0"])
+      s.add_dependency(%q<faraday_middleware>, [">= 0"])
+      s.add_dependency(%q<hashie>, [">= 0"])
+      s.add_dependency(%q<multi_xml>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 0"])
     end
   else
+    s.add_dependency(%q<faraday>, [">= 0"])
+    s.add_dependency(%q<faraday_middleware>, [">= 0"])
+    s.add_dependency(%q<hashie>, [">= 0"])
+    s.add_dependency(%q<multi_xml>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 0"])
   end
 end
 

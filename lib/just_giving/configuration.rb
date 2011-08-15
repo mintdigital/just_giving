@@ -1,0 +1,41 @@
+module JustGiving
+  class Configuration
+    BASE_URI = "http://www.justgiving.com"
+
+    @@application_id = nil
+    @@environment = :staging
+    @@ca_path =  "/usr/lib/ssl/certs"
+
+    ## This is your Just Giving application id
+    def self.application_id
+      @@application_id
+    end
+
+    def self.application_id=(id)
+      @@application_id = id
+    end
+
+    ## This can be either :staging or :production and sets what endpoint to use
+    def self.environment=(env)
+      @@environment = env
+    end
+
+    def self.environment
+      @@environment
+    end
+
+    ## The API endpoint
+    def self.api_endpoint
+      environment == :staging ? "https://api.staging.justgiving.com/#{application_id}" : "https://api.justgiving.com/#{application_id}"
+    end
+
+    ## Path to the systems CA cert bundles
+    def self.ca_path=(path)
+      @@ca_path = path
+    end
+    
+    def self.ca_path
+      @@ca_path
+    end
+  end
+end

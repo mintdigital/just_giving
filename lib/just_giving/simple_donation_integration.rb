@@ -3,12 +3,12 @@ require 'cgi'
 module JustGiving
   class SimpleDonationIntegration
     def self.charity_page_url(short_name)
-      "#{JustGiving::Config::BASE_URI}/#{short_name}/donate" 
+      "#{JustGiving::Configuration::BASE_URI}/#{short_name}/donate" 
     end
 
     def self.charity_donation_url(charity_id, options={})
       options = self.parse_options(options)
-      url = "#{JustGiving::Config::BASE_URI}/donation/direct/charity/#{charity_id}"
+      url = "#{JustGiving::Configuration::BASE_URI}/donation/direct/charity/#{charity_id}"
       url << self.options_to_query(options) if options.any?
       url
     end
@@ -19,7 +19,7 @@ module JustGiving
 
     def self.fundraising_donation_url(page_id, options={})
       options = self.parse_options(options)
-      url = "#{JustGiving::Config::BASE_URI}/donation/sponsor/page/#{page_id}"
+      url = "#{JustGiving::Configuration::BASE_URI}/donation/sponsor/page/#{page_id}"
       url << self.options_to_query(options) if options.any?
       url
     end

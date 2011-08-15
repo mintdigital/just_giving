@@ -1,0 +1,18 @@
+<fundraisingPages xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<fundraisingPage>
+    <designId>1</designId>
+    <giftAidPlusSupplement>0.00</giftAidPlusSupplement>
+    <offlineDonations>0.0000</offlineDonations>
+    <pageId>2292733</pageId>
+<pageImages xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <a:string>Stock/birthdaycake.gif</a:string>
+</pageImages>
+    <pageShortName>Alwyn-Lombaard4</pageShortName>
+    <pageStatus>Active</pageStatus>
+    <pageTitle>Alwyn’s page</pageTitle>
+    <raisedAmount>0.000000</raisedAmount>
+    <targetAmount>0.0000</targetAmount>
+    <totalRaisedOnline>0.000000</totalRaisedOnline>
+</fundraisingPage>
+
+</fundraisingPages>
