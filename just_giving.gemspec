@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Thomas Pomfret}]
-  s.date = %q{2011-08-15}
+  s.date = %q{2011-08-16}
   s.description = %q{A ruby wrapper for the justgiving.com API}
   s.email = %q{thomas@mintdigital.com}
   s.extra_rdoc_files = [
@@ -24,18 +24,38 @@ Gem::Specification.new do |s|
     "Rakefile",
     "just_giving.gemspec",
     "lib/faraday/raise_http_4xx.rb",
+    "lib/faraday/raise_http_5xx.rb",
     "lib/just_giving.rb",
     "lib/just_giving/account.rb",
     "lib/just_giving/api.rb",
     "lib/just_giving/configuration.rb",
     "lib/just_giving/connection.rb",
+    "lib/just_giving/donation.rb",
     "lib/just_giving/error.rb",
+    "lib/just_giving/fundraising.rb",
     "lib/just_giving/railtie.rb",
     "lib/just_giving/request.rb",
+    "lib/just_giving/search.rb",
     "lib/just_giving/simple_donation_integration.rb",
     "lib/just_giving/version.rb",
     "lib/just_giving/view_helpers.rb",
+    "test/fixtures/account_create_fail.xml",
+    "test/fixtures/account_create_success.xml",
+    "test/fixtures/account_list_all_pages.xml",
+    "test/fixtures/donation_status_fail.xml",
+    "test/fixtures/donation_status_success.xml",
+    "test/fixtures/fundraising_donations_success.xml",
+    "test/fixtures/fundraising_get_page_success.xml",
+    "test/fixtures/fundraising_page_success.xml",
+    "test/fixtures/fundraising_pages_success.xml",
+    "test/fixtures/fundraising_update_story_success.xml",
+    "test/fixtures/search_success.xml",
     "test/helper.rb",
+    "test/test_account.rb",
+    "test/test_configuration.rb",
+    "test/test_donation.rb",
+    "test/test_fundraising.rb",
+    "test/test_search.rb",
     "test/test_simple_donation_integration.rb"
   ]
   s.homepage = %q{http://github.com/mintdigital/just_giving}

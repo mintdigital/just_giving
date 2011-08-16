@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageRegistration xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<error i:nil="true" />
+<next>
+    <rel>http://api.local.justgiving.com/353e7770722fead8224dace69e6d1d52/v1/fundraising/pages</rel>
+    <uri>http://www.local.justgiving.com/my-test-pageegA9karGrUGm8B09tqlmIA</uri>
+    <type>application/html</type>
+</next>
+</pageRegistration>

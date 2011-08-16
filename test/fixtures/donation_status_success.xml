@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<donationResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <amount>1</amount>
+  <donationId>1</donationId>
+<donationRef i:nil="true" />
+<ref />
+  <status>Pending</status>
+</donationResult>

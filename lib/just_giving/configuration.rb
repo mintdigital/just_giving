@@ -26,6 +26,7 @@ module JustGiving
 
     ## The API endpoint
     def self.api_endpoint
+      raise JustGiving::InvalidApplicationId.new if !application_id
       environment == :staging ? "https://api.staging.justgiving.com/#{application_id}" : "https://api.justgiving.com/#{application_id}"
     end
 
@@ -36,6 +37,23 @@ module JustGiving
     
     def self.ca_path
       @@ca_path
+    end
+
+    ## Username/password for basic auth
+    def self.username
+      @@username
+    end
+
+    def self.username=(username)
+      @@username = username
+    end
+
+    def self.password=(password)
+      @@password = password
+    end
+
+    def self.password
+      @@password
     end
   end
 end

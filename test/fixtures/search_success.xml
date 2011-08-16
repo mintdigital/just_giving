@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<charitySearch xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<charitySearchResults>
+<charitySearchResult>
+      <charityId>254</charityId>
+      <description>Help keep the magic alive for thousands of children </description>
+      <name>Great Ormond Street Hospital Children’s Charity (<span class="caps">GOSHCC</span>)</name>
+      <registrationNumber>235825</registrationNumber>
+</charitySearchResult>
+<charitySearchResult>
+      <charityId>2116</charityId>
+      <description>Macmillan Cancer Support improves the lives of people affected by cancer.</description>
+      <name>Macmillan Cancer Support</name>
+      <registrationNumber>261017</registrationNumber>
+</charitySearchResult>
+</charitySearchResults>
+<next>
+    <rel>http://api.local.justgiving.com/353e7770722fead8224dace69e6d1d52/v1/charity/search?q=Charity&page=1&pagesize=2</rel>
+    <uri>http://api.local.justgiving.com/353e7770722fead8224dace69e6d1d52/v1/charity/search?q=Charity&page=2&pagesize=2</uri>
+    <type>application/xml</type>
+</next>
+  <numberOfHits>2337</numberOfHits>
+<prev i:nil="true" />
+  <query>Charity</query>
+<sugguestedQuery i:nil="true" />
+  <totalPages>1169</totalPages>
+</charitySearch>
