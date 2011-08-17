@@ -8,15 +8,15 @@ module JustGiving
     
     def connection(basic_auth=false)
       options = {
-        :headers => {'Accept' => "application/xml"},
+        :headers => {'Accept' => "application/json"},
         :url => JustGiving::Configuration.api_endpoint,
         :ssl => {:ca_path => JustGiving::Configuration.ca_path, :verify => false}
       }
 
       connection = Faraday::Connection.new(options) do |connection|
-        connection.use Faraday::Request::UrlEncoded
+        connection.use Faraday::Request::JSON
         connection.use Faraday::Adapter::NetHttp
-        connection.use Faraday::Response::ParseXml
+        connection.use Faraday::Response::ParseJson
         connection.use Faraday::Response::RaiseHttp4xx
         connection.use Faraday::Response::RaiseHttp5xx
         connection.use Faraday::Response::Mashify

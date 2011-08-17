@@ -1,7 +1,7 @@
 just_giving
 ===========
 
-A ruby wrapper for the justgiving.com API
+A ruby wrapper for the justgiving.com API (https://api.justgiving.com/docs)
 
 Installation
 ------------
@@ -30,10 +30,32 @@ As you can see just_giving_charity_donation_page_url and just_giving_fundraising
 
 ### API
 
+#### Configure
+
 JustGiving::Configuration.application_id = YOUR_APP_ID
-JustGiving::Configuration.ca_path = "/System/Library/OpenSSL/certs" (defaults to "/usr/lib/ssl/certs")
+
+JustGiving::Configuration.ca_path = "/System/Library/OpenSSL/certs" # (defaults to "/usr/lib/ssl/certs")
+
 JustGiving::Configuration.environment = :production (defaults to :staging)
+
+JustGiving::Configuration.username = 'test@example.com' # Needed for actions that require auth
+
+JustGiving::Configuration.password = 'secret' # Needed for actions that require auth
+
+#### Account calls
 JustGiving::Account.new(YOUR_EMAIL).pages
+
+JustGiving::Account.new.create({:title => 'Mr', :firstName => 'Test', :lastName => 'McTest', :address => {:line1 => 'Unit 100', :townOrCity => 'London', :country => 'UK', :postcodeOrZipcode => 'ec1r 0jh'}, :email => 'test@example.com', :password => 'password', :acceptTermsAndConditions => true})
+
+#### Fundraising calls
+JustGiving::Fundraising.new('short-name').donations
+
+For further examples please check the tests
+
+TODO
+----
+
+* Note that currently some responses return 400, 404 and are expected responses. Currently these raise when they should return errors.
 
 
 Contributing to just_giving

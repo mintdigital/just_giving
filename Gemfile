@@ -6,7 +6,8 @@ source "http://rubygems.org"
 gem "faraday"
 gem "faraday_middleware"
 gem "hashie"
-gem "multi_xml"
+gem "multi_json", "~> 1.0.1"
+gem "yajl-ruby"
 
 
 # Add dependencies to develop your gem here.

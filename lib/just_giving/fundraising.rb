@@ -13,7 +13,12 @@ module JustGiving
     end
 
     def short_name_registered?
-      head("v1/fundraising/pages/#{@short_name}")
+      begin
+        head("v1/fundraising/pages/#{@short_name}")
+        return true
+      rescue JustGiving::NotFound
+        return false
+      end
     end
 
     def page

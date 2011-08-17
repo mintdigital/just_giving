@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<errors xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-<error>
-    <id>InvalidDonationId</id>
-    <desc>Cannot retrieve status for an invalid donation Id. Invalid Donation Id was ‘-1’.</desc>
-</error>
-</errors>

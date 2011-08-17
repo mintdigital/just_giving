@@ -1,0 +1,21 @@
+[
+  {
+    "pageId": 1457423,
+    "pageTitle": "Alwyn’s page",
+    "pageStatus": "Active",
+    "pageShortName": "myJustGivingShortName",
+    "raisedAmount": 20.0,
+    "designId": 1,
+    "targetAmount": 1000.0,
+    "offlineDonations": 10.0,
+    "totalRaisedOnline": 50.00,
+    "giftAidPlusSupplement": 1.25,
+    "pageImages": [
+      "42010/65f56cc6-3535-436e-927d-eb9c24b82a6e.jpg"
+    ],
+    "eventName": "My Awesome Event",
+    "domain": "www.justgiving.com",
+    "smsCode": "PEJN76",
+    "charityId": 1
+  }
+]

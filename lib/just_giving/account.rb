@@ -1,5 +1,3 @@
-require 'just_giving/api'
-
 module JustGiving
   class Account < API
     def initialize(email=nil)
@@ -12,9 +10,24 @@ module JustGiving
     end
 
     # This creates an user account with Just Giving
-    # Note that currently bad params raise a 400 - these should ideally return the errors
     def create(params)
-      put("v1/account", params)
+      put('v1/account', params)
+    end
+
+    def validate(params)
+      post('v1/account/validate', params)
+    end
+
+    def available?
+      head("v1/account/#{@email}")
+    end
+
+    def change_password(params)
+      post('v1/account/changePassword', params)
+    end
+
+    def password_reminder
+      get("v1/account/#{@email}/requestpasswordreminder")
     end
   end
 end
