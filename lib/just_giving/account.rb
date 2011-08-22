@@ -14,18 +14,22 @@ module JustGiving
       put('v1/account', params)
     end
 
+    # This validates a username/password
     def validate(params)
       post('v1/account/validate', params)
     end
 
+    # Confirm if an email is available or not
     def available?
       head("v1/account/#{@email}")
     end
 
+    # Update password
     def change_password(params)
       post('v1/account/changePassword', params)
     end
 
+    # Send password reminder
     def password_reminder
       get("v1/account/#{@email}/requestpasswordreminder")
     end
