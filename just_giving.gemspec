@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Thomas Pomfret}]
-  s.date = %q{2011-08-17}
+  s.date = %q{2011-08-23}
   s.description = %q{A ruby wrapper for the justgiving.com API}
   s.email = %q{thomas@mintdigital.com}
   s.extra_rdoc_files = [
@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
     "lib/just_giving/fundraising.rb",
     "lib/just_giving/railtie.rb",
     "lib/just_giving/request.rb",
+    "lib/just_giving/response.rb",
     "lib/just_giving/search.rb",
     "lib/just_giving/simple_donation_integration.rb",
     "lib/just_giving/version.rb",
