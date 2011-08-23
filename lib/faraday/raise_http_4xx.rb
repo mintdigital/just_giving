@@ -5,8 +5,6 @@ module Faraday
     def on_complete(env)
       env[:response].on_complete do |response|
         case response[:status].to_i
-        when 400
-          raise JustGiving::BadRequest, error_message(response)
         when 404
           raise JustGiving::NotFound, error_message(response)
         end
@@ -20,10 +18,11 @@ module Faraday
     end
 
     def error_body(body)
+      body = MultiJson.decode(body)
       if body.nil?
         nil
-      elsif body['error']
-        body['error']['id']
+      elsif body.any?
+        body.collect{|error| "#{error['id']} #{error['desc']}"}
       end
     end
   end

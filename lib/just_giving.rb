@@ -1,4 +1,5 @@
 require 'just_giving/error'
+require 'just_giving/response'
 require 'just_giving/configuration'
 require 'just_giving/simple_donation_integration'
 require 'just_giving/api'

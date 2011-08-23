@@ -52,11 +52,18 @@ JustGiving::Fundraising.new('short-name').donations
 
 For further examples please check the tests
 
+Note that a 404 will raise a JustGiving::NotFound error
+
+A 400 response means the params supplied are wrong - this will return an errors collection with the details, eg:
+
+response = JustGiving::Account.new('unkown@unkown.com').password_reminder
+
+response.errors # errors array
+
 TODO
 ----
 
-* Note that currently some responses return 400, 404 and are expected responses. Currently these raise when they should return errors.
-
+* Finish off all calls
 
 Contributing to just_giving
 ---------------------------

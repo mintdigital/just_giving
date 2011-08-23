@@ -43,5 +43,9 @@ module JustGiving
     def upload_image
       # TODO
     end
+
+    def suggest
+      # TODO
+    end
   end
 end

@@ -29,7 +29,12 @@ module JustGiving
           request.body = options unless options.empty?
         end
       end
-      response.body
+      case response.status
+      when 400 #Return errors if 400
+        JustGiving::Response.new(response.body)
+      else
+        response.body
+      end
     end
   end
 end

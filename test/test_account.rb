@@ -32,15 +32,79 @@ class TestAccount < Test::Unit::TestCase
         :body => fixture('account_create_success.json'),
         :headers =>  {:content_type =>  'application/json; charset=utf-8'})
       account = JustGiving::Account.new.create({:registration => {:email => 'test@example.com'}})
-      assert_equal "test@example.com", account["email"]
+      assert_equal 'test@example.com', account["email"]
     end
 
     should 'not create account with bad params' do
       stub_put('/v1/account').to_return(:body => fixture('account_create_fail.json'),
         :headers =>  {:content_type =>  'text/xml; charset=utf-8'}, :status => 400)
-        assert_raise JustGiving::BadRequest do
-          account = JustGiving::Account.new.create({})
-        end
+      account = JustGiving::Account.new.create({})
+      assert account.errors
+    end
+  end
+
+  context 'Validate account' do
+    should 'return invalid account' do
+      stub_post('/v1/account/validate').with({'Accept'=>'application/json'}).to_return(
+        :body => "{\"consumerId\":0,\"isValid\":false}", :headers => {:content_type =>  'application/json; charset=utf-8'})
+      account = JustGiving::Account.new.validate(:email => 'test@example.com', :password => 'secret')
+      assert !account["isValid"]
+    end
+
+    should 'return valid account' do
+      stub_post('/v1/account/validate').with({'Accept'=>'application/json'}).to_return(
+        :body => "{\"consumerId\":1,\"isValid\":true}", :headers => {:content_type =>  'application/json; charset=utf-8'})
+      account = JustGiving::Account.new.validate(:email => 'test@example.com', :password => 'secret')
+      assert account["isValid"]
+      assert_equal 1, account["consumerId"]
+    end
+  end
+
+  context 'Checking if an email is available' do
+    should 'return email is not available' do
+      stub_head('/v1/account/test@example.com').with({'Accept'=>'application/json'}).to_return(
+        :status => 200, :headers => {:content_type =>  'application/json; charset=utf-8'})
+      assert !JustGiving::Account.new('test@example.com').available?
+    end
+
+    should 'return email is available' do
+      stub_head('/v1/account/test@example.com').with({'Accept'=>'application/json'}).to_return(
+        :status => 404, :headers => {:content_type =>  'application/json; charset=utf-8'})
+      assert JustGiving::Account.new('test@example.com').available?
+    end
+  end
+
+  context 'Changing password' do
+    should 'change password' do
+      stub_post('/v1/account/changePassword').with({'Accept'=>'application/json'}).to_return(
+        :body => "{\"success\": true}", :headers => {:content_type =>  'application/json; charset=utf-8'})
+      response = JustGiving::Account.new.change_password(:emailAddress => 'test@example.com', :newPassword => 'secret',
+        :currentPassword => 'password')
+      assert response["success"]
+    end
+
+    should 'not change password' do
+      stub_post('/v1/account/changePassword').with({'Accept'=>'application/json'}).to_return(
+        :body => "{\"success\": false}", :headers => {:content_type =>  'application/json; charset=utf-8'})
+      response = JustGiving::Account.new.change_password(:emailAddress => 'test@example.com', :newPassword => 'secret',
+        :currentPassword => 'password')
+      assert !response["success"]
+    end
+  end
+
+  context 'Password reminder' do
+    should 'send password reminder' do
+      stub_get('/v1/account/test@example.com/requestpasswordreminder').with({'Accept'=>'application/json'}).to_return(
+        :status => 200, :headers => {:content_type =>  'application/json; charset=utf-8'})
+      assert JustGiving::Account.new('test@example.com').password_reminder
+    end
+
+    should 'not sent password reminder' do
+      stub_get('/v1/account/test@example.com/requestpasswordreminder').with({'Accept'=>'application/json'}).to_return(
+        :status => 400, :body => "[{\"id\":\"AccountNotFound\",\"desc\":\"An account with that email address could not be found\"}",
+        :headers => {:content_type =>  'application/json; charset=utf-8'})
+      response = JustGiving::Account.new('test@example.com').password_reminder
+      assert response.errors
     end
   end
 end

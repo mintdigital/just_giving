@@ -21,7 +21,12 @@ module JustGiving
 
     # Confirm if an email is available or not
     def available?
-      head("v1/account/#{@email}")
+      begin
+        head("v1/account/#{@email}")
+        return false
+      rescue JustGiving::NotFound
+        return true
+      end
     end
 
     # Update password
@@ -31,7 +36,8 @@ module JustGiving
 
     # Send password reminder
     def password_reminder
-      get("v1/account/#{@email}/requestpasswordreminder")
+      response = get("v1/account/#{@email}/requestpasswordreminder")
+      (response && response.errors) ? response : true
     end
   end
 end
