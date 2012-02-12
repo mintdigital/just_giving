@@ -15,7 +15,7 @@ module JustGiving
       @@application_id = id
     end
 
-    ## This can be either :staging or :production and sets what endpoint to use
+    ## This can be :sandbox, :staging or :production and sets what endpoint to use
     def self.environment=(env)
       @@environment = env
     end
@@ -27,7 +27,11 @@ module JustGiving
     ## The API endpoint
     def self.api_endpoint
       raise JustGiving::InvalidApplicationId.new if !application_id
-      environment == :staging ? "https://api.staging.justgiving.com/#{application_id}" : "https://api.justgiving.com/#{application_id}"
+      case environment
+        when :sandbox then "https://api-sandbox.justgiving.com/#{application_id}"
+        when :staging then "https://api-staging.justgiving.com/#{application_id}"
+        else "https://api.justgiving.com/#{application_id}"
+      end
     end
 
     ## Path to the systems CA cert bundles
