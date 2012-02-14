@@ -10,14 +10,18 @@ class TestConfiguration < Test::Unit::TestCase
   
   should 'allow setting the enviroment' do
     assert_equal :staging, JustGiving::Configuration.environment
+    JustGiving::Configuration.environment = :sandbox
+    assert_equal :sandbox, JustGiving::Configuration.environment
     JustGiving::Configuration.environment = :production
     assert_equal :production, JustGiving::Configuration.environment
   end
   
   should 'return the api endpoint' do
-    JustGiving::Configuration.environment = :staging    
     JustGiving::Configuration.application_id = '5678'
-    assert_equal 'https://api.staging.justgiving.com/5678', JustGiving::Configuration.api_endpoint
+    JustGiving::Configuration.environment = :sandbox
+    assert_equal 'https://api-sandbox.justgiving.com/5678', JustGiving::Configuration.api_endpoint
+    JustGiving::Configuration.environment = :staging
+    assert_equal 'https://api-staging.justgiving.com/5678', JustGiving::Configuration.api_endpoint
     JustGiving::Configuration.environment = :production
     assert_equal 'https://api.justgiving.com/5678', JustGiving::Configuration.api_endpoint
   end
