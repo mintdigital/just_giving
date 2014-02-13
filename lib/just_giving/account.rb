@@ -37,7 +37,7 @@ module JustGiving
     # Send password reminder
     def password_reminder
       response = get("v1/account/#{@email}/requestpasswordreminder")
-      (response && response.errors) ? response : true
+      (response && response[:errors]) ? response : true
     end
   end
 end
