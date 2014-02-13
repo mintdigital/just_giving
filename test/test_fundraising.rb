@@ -52,8 +52,15 @@ class TestFundraising < Test::Unit::TestCase
 
   context 'with no basic auth' do
     should 'check if short name is registered' do
-      stub_head('/v1/fundraising/pages/test').with(:headers => {'Accept'=>'application/json'}).to_return(
-        :status => 200, :headers => {:content_type =>  'application/json; charset=utf-8'})
+      stub_head('/v1/fundraising/pages/test').with({
+        :headers => {'Accept'=>'application/json'}
+      }).to_return({
+        :status => 200, 
+        :headers => {
+          :content_type =>  'application/json; charset=utf-8'
+        },
+        :body => "{}"
+      })
       assert JustGiving::Fundraising.new('test').short_name_registered?
     end
 

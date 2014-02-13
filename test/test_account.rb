@@ -12,7 +12,7 @@ class TestAccount < Test::Unit::TestCase
         :headers => {:content_type =>  'application/json; charset=utf-8'})
       account = JustGiving::Account.new('test@example.com')
       pages = account.pages
-      assert_equal 'Alwyn’s page', pages.first['pageTitle']
+      assert_equal 'Alwyn\'s page', pages.first['pageTitle']
       assert_equal 'Active', pages.first['pageStatus']
       assert_equal 1, pages.first['designId']
     end
@@ -62,14 +62,28 @@ class TestAccount < Test::Unit::TestCase
 
   context 'Checking if an email is available' do
     should 'return email is not available' do
-      stub_head('/v1/account/test@example.com').with({'Accept'=>'application/json'}).to_return(
-        :status => 200, :headers => {:content_type =>  'application/json; charset=utf-8'})
+      stub_head('/v1/account/test@example.com').with({
+        'Accept'=>'application/json'
+      }).to_return({
+        :status => 200, 
+        :headers => {
+          :content_type =>  'application/json; charset=utf-8'
+        },
+        :body => "{}"
+      })
       assert !JustGiving::Account.new('test@example.com').available?
     end
 
     should 'return email is available' do
-      stub_head('/v1/account/test@example.com').with({'Accept'=>'application/json'}).to_return(
-        :status => 404, :headers => {:content_type =>  'application/json; charset=utf-8'})
+      stub_head("/v1/account/test@example.com").with({
+        'Accept'=>'application/json'
+      }).to_return({
+        :status => 404, 
+        :headers => {
+          :content_type => 'application/json; charset=utf-8'
+        },
+        :body => "{}"
+      })
       assert JustGiving::Account.new('test@example.com').available?
     end
   end
@@ -94,8 +108,15 @@ class TestAccount < Test::Unit::TestCase
 
   context 'Password reminder' do
     should 'send password reminder' do
-      stub_get('/v1/account/test@example.com/requestpasswordreminder').with({'Accept'=>'application/json'}).to_return(
-        :status => 200, :headers => {:content_type =>  'application/json; charset=utf-8'})
+      stub_get('/v1/account/test@example.com/requestpasswordreminder').with({
+        'Accept'=>'application/json'
+      }).to_return({
+        :status => 200, 
+        :headers => {
+          :content_type =>  'application/json; charset=utf-8'
+        },
+        :body => "{}"
+      })
       assert JustGiving::Account.new('test@example.com').password_reminder
     end
 
