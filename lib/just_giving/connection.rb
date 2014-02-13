@@ -14,12 +14,15 @@ module JustGiving
       }
 
       connection = Faraday::Connection.new(options) do |connection|
-        connection.use Faraday::Request::JSON
-        connection.use Faraday::Adapter::NetHttp
-        connection.use Faraday::Response::ParseJson
+        connection.request :json
+
+        connection.response :json
+        connection.response :mashify
+
         connection.use Faraday::Response::RaiseHttp4xx
         connection.use Faraday::Response::RaiseHttp5xx
-        connection.use Faraday::Response::Mashify
+
+        connection.adapter :net_http
       end
       connection.basic_auth(JustGiving::Configuration.username, JustGiving::Configuration.password) if basic_auth
       connection
