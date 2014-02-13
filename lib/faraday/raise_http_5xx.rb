@@ -1,4 +1,5 @@
 require 'faraday'
+require 'multi_json'
 
 module Faraday
   class Response::RaiseHttp5xx < Response::Middleware
