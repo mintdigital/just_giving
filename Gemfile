@@ -3,10 +3,10 @@ source "http://rubygems.org"
 # Example:
 #   gem "activesupport", ">= 2.3.5"
 
-gem "faraday"
-gem "faraday_middleware", '~> 0.7'
+gem "faraday", '~> 0.7.4'
+gem "faraday_middleware", '= 0.7'
 gem "hashie"
-gem "multi_json", "~> 1.0.1"
+gem "multi_json", "~> 1.8.4"
 gem "yajl-ruby"
 
 
@@ -14,8 +14,8 @@ gem "yajl-ruby"
 # Include everything needed to run rake, tests, features, etc.
 group :development do
   gem "shoulda", ">= 0"
-  gem "bundler", "~> 1.0.0"
+  gem "bundler", ">= 1.0.0"
   gem "jeweler", "~> 1.6.4"
-  gem "rcov", ">= 0"
+  gem "simplecov", ">= 0"
   gem "webmock"
 end
