@@ -121,9 +121,13 @@ class TestAccount < Test::Unit::TestCase
     end
 
     should 'not sent password reminder' do
-      stub_get('/v1/account/test@example.com/requestpasswordreminder').with({'Accept'=>'application/json'}).to_return(
-        :status => 400, :body => "[{\"id\":\"AccountNotFound\",\"desc\":\"An account with that email address could not be found\"}",
-        :headers => {:content_type =>  'application/json; charset=utf-8'})
+      stub_get('/v1/account/test@example.com/requestpasswordreminder').with({
+        'Accept'=>'application/json'
+      }).to_return({
+        :status => 400, 
+        :body => "[{\"id\":\"AccountNotFound\",\"desc\":\"An account with that email address could not be found\"}]",
+        :headers => {:content_type =>  'application/json; charset=utf-8'}
+      })
       response = JustGiving::Account.new('test@example.com').password_reminder
       assert response.errors
     end
