@@ -15,6 +15,13 @@ class TestConfiguration < Test::Unit::TestCase
     JustGiving::Configuration.environment = :production
     assert_equal :production, JustGiving::Configuration.environment
   end
+
+  should 'return the base_uri based on environment' do
+    JustGiving::Configuration::BASE_URI_MAP.each do |k,v|
+      JustGiving::Configuration.environment = k
+      assert_equal v, JustGiving::Configuration.base_uri
+    end
+  end
   
   should 'return the api endpoint' do
     JustGiving::Configuration.application_id = '5678'

@@ -1,6 +1,10 @@
 module JustGiving
   class Configuration
-    BASE_URI = "http://www.justgiving.com"
+    BASE_URI_MAP = {
+      :production => "http://www.justgiving.com",
+      :staging => "http://v3-staging.justgiving.com",
+      :sandbox => "http://v3-sandbox.justgiving.com"
+    }
 
     @@application_id = nil
     @@environment = :staging
@@ -13,6 +17,10 @@ module JustGiving
 
     def self.application_id=(id)
       @@application_id = id
+    end
+
+    def self.base_uri
+      BASE_URI_MAP[self.environment]
     end
 
     ## This can be :sandbox, :staging or :production and sets what endpoint to use

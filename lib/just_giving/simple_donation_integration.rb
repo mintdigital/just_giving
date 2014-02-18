@@ -4,13 +4,13 @@ module JustGiving
   class SimpleDonationIntegration
     # Returns url to link to a charity page
     def self.charity_page_url(short_name)
-      "#{JustGiving::Configuration::BASE_URI}/#{short_name}/donate" 
+      "#{JustGiving::Configuration.base_uri}/#{short_name}/donate" 
     end
 
     # Returns url for the donation page of a charity
     def self.charity_donation_url(charity_id, options={})
       options = self.parse_options(options)
-      url = "#{JustGiving::Configuration::BASE_URI}/donation/direct/charity/#{charity_id}"
+      url = "#{JustGiving::Configuration.base_uri}/donation/direct/charity/#{charity_id}"
       url << self.options_to_query(options) if options.any?
       url
     end
@@ -22,7 +22,7 @@ module JustGiving
     # Returns url for the donation page of a fundraising
     def self.fundraising_donation_url(page_id, options={})
       options = self.parse_options(options)
-      url = "#{JustGiving::Configuration::BASE_URI}/donation/sponsor/page/#{page_id}"
+      url = "#{JustGiving::Configuration.base_uri}/donation/sponsor/page/#{page_id}"
       url << self.options_to_query(options) if options.any?
       url
     end

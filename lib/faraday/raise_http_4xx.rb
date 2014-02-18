@@ -1,4 +1,5 @@
 require 'faraday'
+require 'multi_json'
 
 module Faraday
   class Response::RaiseHttp4xx < Response::Middleware
@@ -18,6 +19,7 @@ module Faraday
     end
 
     def error_body(body)
+      return nil if body.nil?
       body = MultiJson.decode(body)
       if body.nil?
         nil
