@@ -101,7 +101,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<faraday>, [">= 0"])
     s.add_dependency(%q<faraday_middleware>, [">= 0"])
     s.add_dependency(%q<hashie>, [">= 0"])
-    s.add_dependency(%q<multi_json>, ["~> 1.0.1"])
+    s.add_dependency(%q<multi_json>, [">= 1.0.1"])
     s.add_dependency(%q<yajl-ruby>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
