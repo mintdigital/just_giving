@@ -19,8 +19,8 @@ module JustGiving
         connection.response :json
         connection.response :mashify
 
-        connection.use Faraday::Response::RaiseHttp4xx
-        connection.use Faraday::Response::RaiseHttp5xx
+        #connection.use Faraday::Response::RaiseHttp4xx
+        #connection.use Faraday::Response::RaiseHttp5xx
 
         connection.adapter :net_http
       end
