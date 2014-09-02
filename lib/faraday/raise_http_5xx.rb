@@ -4,7 +4,6 @@ require 'multi_json'
 module Faraday
   class Response::RaiseHttp5xx < Response::Middleware
     def on_complete(env)
-      p env
       env[:response].on_complete do |response|
         case response[:status].to_i
         when 500
